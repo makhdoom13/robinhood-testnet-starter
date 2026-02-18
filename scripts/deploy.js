@@ -5,12 +5,8 @@ async function main() {
   const DemoToken = await ethers.getContractFactory("DemoToken");
   const token = await DemoToken.deploy();
   await token.waitForDeployment();
-  console.log("DemoToken:", await token.getAddress());
 
-  const Vault = await ethers.getContractFactory("StakingVault");
-  const vault = await Vault.deploy(await token.getAddress());
-  await vault.waitForDeployment();
-  console.log("StakingVault:", await vault.getAddress());
+  console.log("DemoToken deployed to:", await token.getAddress());
 }
 
 main().catch((e) => {
